@@ -92,6 +92,41 @@ ul#results li:nth-child(even) {
     background-color: #e9ecef;
 }
 
+/* About Section */
+#about {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #007bff;
+}
+
+#about p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+#contact {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #007bff;
+}
+
+#contact p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+#contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -102,4 +137,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
