@@ -1,26 +1,35 @@
-let url = "http://universities.hipolabs.com/search?country=";
+let url = "https://universities.hipolabs.com/search?country="; // Change to HTTPS
 
 async function searchColleges() {
     const country = document.getElementById('country').value.trim();
     const state = document.getElementById('state').value.trim();
     
     // Fetch colleges by country
-    const response = await fetch(url + country);
-    const colleges = await response.json();
-    
-    // If state is provided, filter the colleges by state
-    let filteredColleges = colleges;
-    if (state) {
-        filteredColleges = colleges.filter(college => {
-            // Check if the college name or state-related fields contain the state name
-            // This is a basic filter as API does not support state natively
-            return college.name.toLowerCase().includes(state.toLowerCase()) ||
-                   (college["state-province"] && college["state-province"].toLowerCase().includes(state.toLowerCase()));
-        });
+    try {
+        const response = await fetch(url + country);
+        
+        // Check if the response is okay
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const colleges = await response.json();
+        
+        // If state is provided, filter the colleges by state
+        let filteredColleges = colleges;
+        if (state) {
+            filteredColleges = colleges.filter(college => {
+                return college.name.toLowerCase().includes(state.toLowerCase()) ||
+                       (college["state-province"] && college["state-province"].toLowerCase().includes(state.toLowerCase()));
+            });
+        }
+        
+        // Display results
+        displayResults(filteredColleges);
+    } catch (error) {
+        console.error("Error fetching college data:", error);
+        alert("An error occurred while fetching data. Please try again later.");
     }
-    
-    // Display results
-    displayResults(filteredColleges);
 }
 
 function displayResults(colleges) {
