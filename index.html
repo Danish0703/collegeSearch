@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>College Search</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <main>
+        <h2>Search Colleges by Country or State</h2>
+        
+        <!-- Country Input -->
+        <label for="country">Country:</label>
+        <input type="text" id="country" placeholder="Enter country name">
+        
+        <!-- State Input -->
+        <label for="state">State (optional):</label>
+        <input type="text" id="state" placeholder="Enter state name">
+        
+        <button onclick="searchColleges()">Search</button>
+        
+        <ul id="results"></ul>
+        
+        <div id="college-details" class="college-details">
+            <!-- College details will be displayed here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 College Search</p>
+        <p>made by ♥ Danish</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
