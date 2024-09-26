@@ -1,4 +1,4 @@
-const baseUrl = "http://universities.hipolabs.com/search?";
+const baseUrl = "https://universities.hipolabs.com/search?";
 
 // Function to search colleges by country and state
 async function searchColleges() {
