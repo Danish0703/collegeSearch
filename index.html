@@ -11,32 +11,55 @@
         <h1>College Search</h1>
     </header>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>  <!-- Scrolls to the home section -->
+        <a href="#about">About</a> <!-- Scrolls to the About section -->
+        <a href="#contact">Contact</a> <!-- Scrolls to the Contact section -->
     </nav>
+
     <main>
-        <h2>Search Colleges by Country or State</h2>
-        
-        <!-- Country Input -->
-        <label for="country">Country:</label>
-        <input type="text" id="country" placeholder="Enter country name">
-        
-        <!-- State Input -->
-        <label for="state">State (optional):</label>
-        <input type="text" id="state" placeholder="Enter state name">
-        
-        <button onclick="searchColleges()">Search</button>
-        
-        <ul id="results"></ul>
-        
-        <div id="college-details" class="college-details">
-            <!-- College details will be displayed here -->
-        </div>
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Search Colleges by Country or State</h2>
+            
+            <!-- Country Input -->
+            <label for="country">Country:</label>
+            <input type="text" id="country" placeholder="Enter country name">
+            
+            <!-- State Input -->
+            <label for="state">State (optional):</label>
+            <input type="text" id="state" placeholder="Enter state name">
+            
+            <button onclick="searchColleges()">Search</button>
+            
+            <ul id="results"></ul>
+            
+            <div id="college-details" class="college-details">
+                <!-- College details will be displayed here -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About College Search</h2>
+            <p>College Search is a platform designed to help students find universities around the world. 
+               By leveraging open data sources, we allow users to search for colleges by country and state, 
+               making the process of selecting a college easier and more efficient.</p>
+            <p>Whether you're looking to study in your home country or abroad, our easy-to-use interface 
+               ensures that you can find the right college based on your criteria.</p>
+            <p>We are committed to helping students achieve their educational goals by providing accurate and 
+               up-to-date information about colleges globally.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us via email:</p>
+            <p><strong>Email:</strong> <a href="mailto:thatsdanish02@gmail.com">thatsdanish02@gmail.com</a></p>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 College Search</p>
-        <p>made by ♥ Danish</p>
+        <p>&copy; 2023 College Search</p>
     </footer>
     <script src="app.js"></script>
 </body>
