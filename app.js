@@ -11,13 +11,16 @@ async function searchColleges() {
     }
 
     // Construct the URL based on whether the state is provided
-    let searchUrl = `${baseUrl}country=${country}`;
+    let searchUrl = `${baseUrl}country=${encodeURIComponent(country)}`;
     if (state) {
-        searchUrl += `&state-province=${state}`;
+        searchUrl += `&state-province=${encodeURIComponent(state)}`;
     }
 
     try {
         const response = await fetch(searchUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const colleges = await response.json();
         
         if (colleges.length === 0) {
