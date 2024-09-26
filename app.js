@@ -1,48 +1,44 @@
-let url = "https://universities.hipolabs.com/search?country="; // Change to HTTPS
+const baseUrl = "http://universities.hipolabs.com/search?";
 
+// Function to search colleges by country and state
 async function searchColleges() {
     const country = document.getElementById('country').value.trim();
     const state = document.getElementById('state').value.trim();
     
-    // Fetch colleges by country
+    if (!country) {
+        alert("Please enter a country.");
+        return;
+    }
+
+    // Construct the URL based on whether the state is provided
+    let searchUrl = `${baseUrl}country=${country}`;
+    if (state) {
+        searchUrl += `&state-province=${state}`;
+    }
+
     try {
-        const response = await fetch(url + country);
-        
-        // Check if the response is okay
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
+        const response = await fetch(searchUrl);
         const colleges = await response.json();
         
-        // If state is provided, filter the colleges by state
-        let filteredColleges = colleges;
-        if (state) {
-            filteredColleges = colleges.filter(college => {
-                return college.name.toLowerCase().includes(state.toLowerCase()) ||
-                       (college["state-province"] && college["state-province"].toLowerCase().includes(state.toLowerCase()));
-            });
+        if (colleges.length === 0) {
+            alert("No colleges found for the entered country or state.");
+        } else {
+            displayResults(colleges);
         }
-        
-        // Display results
-        displayResults(filteredColleges);
     } catch (error) {
-        console.error("Error fetching college data:", error);
-        alert("An error occurred while fetching data. Please try again later.");
+        console.error("Error fetching data:", error);
+        alert("An error occurred while fetching college data. Please try again.");
     }
 }
 
+// Function to display search results
 function displayResults(colleges) {
     const results = document.getElementById('results');
-    results.innerHTML = '';
-    
-    if (colleges.length === 0) {
-        results.textContent = 'No colleges found.';
-    } else {
-        colleges.forEach(college => {
-            const li = document.createElement('li');
-            li.textContent = `${college.name} (${college.country}${college["state-province"] ? ', ' + college["state-province"] : ''})`;
-            results.appendChild(li);
-        });
-    }
+    results.innerHTML = '';  // Clear previous results
+
+    colleges.forEach(college => {
+        const li = document.createElement('li');
+        li.textContent = `${college.name} (${college['state-province'] || 'N/A'})`;
+        results.appendChild(li);
+    });
 }
